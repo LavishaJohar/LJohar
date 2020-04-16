@@ -53,3 +53,6 @@ There are 5 questions in this practical each having a database,each database hav
 **NOT** -- Displays a record if the condition is not true 
 
 **OR** -- True if any of the condition separated by **OR** is true . 
+
+# Software Used 
+ **MY** **SQL**

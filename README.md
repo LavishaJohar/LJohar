@@ -54,5 +54,9 @@ There are 5 questions in this practical each having a database,each database hav
 
 **OR** -- True if any of the condition separated by **OR** is true . 
 
+# Content
+5 TXT files are attached for this 
+
 # Software Used 
  **MY** **SQL**
+

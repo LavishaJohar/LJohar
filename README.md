@@ -10,7 +10,7 @@ DBMS GE PRACTICALS
 SUBMITTED TO - Dr. VIPIN RATHI
 
 # Description 
-There are 5 questions in this practical each having a database,each database having 3-4 tables and there are queries related to these tables and their corrresponding commands as well
+There are 5 questions in this practical based on data query language (The SQL commands used to retrieve the data from database is known as Data Query Language (DQL)).each question having a database,each database having 3-4 tables and there are queries related to these tables and in the attached folders there are corrresponding commands for these queries .
 # STATEMENTS USED
  **CREATE** **DATABASE** - this statement is used to create new database.
  

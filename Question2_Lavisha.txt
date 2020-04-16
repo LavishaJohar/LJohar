@@ -1,0 +1,43 @@
+﻿NAME      : LAVISHA JOHAR
+ROLL NO :1218
+
+
+Question 2. 
+    
+CREATE DATABASE ComputerScience ;
+USE ComputerScience;
+CREATE table Personal_Information (College_Roll_Number (Integer(7)) primary key , Name (varchar(50))not null, Date_of_birth (date) not null , Address (varchar(60)), Marks_in_10+2 (integer(2)) not null, Phone_number varchar(10)) not null) ; 
+CREATE TABLE PaperDetails (Paper_Code(int(4)) primary key ,Name_of_the_paper (char(80)) unique ); 
+
+
+CREATE TABLE Student_Academic_And_Attendance_Details (College_Roll_Number (int(7)) primary key, Paper Code(int(4)) not null , Attendance(int) not null ,Marks (int(3)) not null ,Foreign Key (College_Roll_Number) REFERENCES Personal_Information (College_Roll_Number) ,Foreign Key (Paper_Code) REFERENCES PaperDetails (Paper_Code)) ; 
+(a)Primary key --  College_Roll_Number in TABLE        Personal_Information 
+Paper_Code in TABLE PaperDetails 
+Foreign Key -- College_Roll_Number in TABLE Student_Academic_And_Attendance_Details
+Paper_Code in TABLE Student_Academic_And_Attendance_Details
+            
+•INSERT INTO Personal_Information VALUES ( 1201 , “Kavish” , 2000-3-4 , “Delhi", 87, 9817654409 ) ;
+•INSERT INTO Personal_Information VALUES (1202, “ Arpan” , 2001-5-6, “Mumbai" ,86, 9816754379 ) ;
+•INSERT INTO Personal_Information VALUES (1203 , “Shubankit” , 1999-6-7, “ Uttar Pradesh” , 67,8998765413) ;
+•INSERT INTO Personal_Information VALUES (1204, “Akshay” , 1998-5-9,"Rajasthan",82, 9875671570); 
+•INSERT INTO Personal_Information VALUES (1205, “Tanay” , 1999-7-16, “Gujarat" ,76,7886157890); 
+
+
+•INSERT INTO PaperDetails VALUES (001 , “Probability and Probability Distribution” );
+•INSERT INTO PaperDetails VALUES (002 , “English Core” );
+•INSERT INTO PaperDetails VALUES (003, “Algebra” ) ;
+•INSERT INTO PaperDetails VALUES (004 , “Computer Science” ) ;
+•INSERT INTO PaperDetails VALUES (005, “Environmental Studies” ) ;
+
+
+
+
+•INSERT INTO Student_Academic_And_Attendance_Details VALUES (1201 , 001 , 65 , 87) ;
+•INSERT INTO Student_Academic_And_Attendance_Details VALUES (1202 ,002 ,78, 86) ;
+•INSERT INTO Student_Academic_And_Attendance_Details VALUES ( 1203 , 003 , 81 , 67) ;
+•INSERT INTO Student_Academic_And_Attendance_Details VALUES ( 1204 , 004 ,86 , 82); 
+•INSERT INTO Student_Academic_And_Attendance_Details VALUES (1205 ,005 , 88, 76) ;
+(b) SELECT ppd.Paper_Code,ppd.Name_of_the_paper ,pi.Name FROM Paper_Details as ppd ,Personal_Information as pi WHERE Paper_Code = 2 and pi.College_Roll_Number IN (SELECT College_Roll_Number FROM Student_Academic_And_Attendance_Details WHERE Paper_Code =2 and Attendance >75 and Marks >60) ; 
+(c)SELECT Name from Personal_Information as pi , Student_Academic_And_Attendance_Details as sa where (pi.College_Roll_Number = sa.College_Roll_Number and sa.Marks >60 and sa.Paper_Code = 001 ) ; 
+(d)SELECT pi.Name,sa.Attendance,sa.Marks from Personal_Information as pi, Student_Academic_And_Attendance_Details as sa where (pi.College_Roll_Number = sa.College_Roll_Number ); 
+(e)SELECT Name FROM Personal_Information as pi, Student_Academic_And_Attendance_Details as sa WHERE ( pi.College_Roll_Number = sa.College_Roll_Number and pi.College_Roll_Number =(SELECT College_Roll_Number FROM Student_Academic_And_Attendance_Details WHERE Marks =(SELECT MAX (Marks) FROM Student_Academic_And_Attendance_Details)) ;

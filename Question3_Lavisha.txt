@@ -1,0 +1,59 @@
+﻿NAME       : LAVISHA JOHAR
+ROLL NO. : 1218
+
+
+Question 3.
+CREATE DATABASE Bicycles ;
+Use Bicycles;
+CREATE TABLE Customer (CustID (int(30)) primary key , email (varchar(60)) not null , Name (varchar(60)) not null , Phone (varchar(10)), ReferrerID (varchar(20)) not null ); 
+
+
+CREATE TABLE BicycleModel (ModelNo (int) primary key , Manufacturer (char(30)) not null , Style (varchar(20)) not null ) ; 
+
+
+CREATE TABLE Bicycle (BicycleID (int) primary key , DatePurchased (Date) not null, Color (char(20)) not null , CustID (int) not null , ModelNo (int) not null, Foreign Key (CustID) REFERENCES Customer (CustID) , Foreign Key (ModelNo) REFERENCES BicycleModel(ModelNo) ) ; 
+CREATE TABLE Service (StartDate (Date) not null , BicycleID (int) not null , EndDate (Date) not null , Foreign Key (BicycleID) REFERENCES Bicycle(BicycleID));
+(a)Primary Key – CustID in TABLE Customer 
+                                  ModelNo in TABLE BicycleModel
+                                  BicycleID in TABLE Bicycle 
+ Foreign Key – CustID in table Bicycle 
+                                  ModelNo in TABLE Bicycle 
+ BicycleID in TABLE Service 
+
+
+•INSERT INTO Customer VALUES   ( 1212, “ rupesh1213@gmail.com”  , “Rupesh" , “9817654789” , “C1” );
+•INSERT INTO Customer VALUES  ( 1213 , “ abhishek1213@gmail.com” , “Abhishek" , “7889816578” , “C2");
+•INSERT INTO Customer VALUES   (1214, “  Maharshi1214@gmail.com “ , “Maharshi" , “8719980178” , “C3" ); 
+•INSERT INTO Customer VALUES  (1215 , “Noel1215@gmail.com”  , “Noel" , “7888981088” , “C4" ) ;
+•INSERT INTO Customer VALUES   (1216, “Jay1216@gmail.com” , “Jay" , “8910758966”, “C5" ) ;
+
+
+
+
+•INSERT INTO BicycleModel VALUES ( 101, “Honda" , “Scooty") ;
+•INSERT INTO BicycleModel VALUES ( 102, “Hercules" ,“Sports");
+•INSERT INTO BicycleModel VALUES (103 , “Hero" , “Bike") ;
+•INSERT INTO BicycleModel VALUES (104, “Honda" , “Sports" ) ;
+•INSERT INTO BicycleModel VALUES (105 , “Hero" , “Scooty" ) ;
+
+
+
+
+•INSERT INTO Bicycle VALUES   (11, “2000-4-5" , “Red" , 1212,101 ) ;
+•INSERT INTO Bicycle VALUES   ( 12, “ 2001-5-7" , “Blue" , 1213, 102) ;
+•INSERT INTO Bicycle VALUES   (13, “2017-5-17" , “White" , 1214 ,103 ) ;
+•INSERT INTO Bicycle VALUES  (14 , “2016-4-15" , “Orange" , 1215, 104 ) ;
+•INSERT INTO Bicycle VALUES  (15 , “ 2018-3-15" , “Yellow" , 1216 ,105) ;
+
+
+•INSERT INTO Service VALUES ( “2019-4-16" , 11 , “2019-4-26" );
+•INSERT INTO Service VALUES ( “2019-5-14” , 12, “2019-5-24" );
+•INSERT INTO Service VALUES ( “2019-6-17" , 13 , “2019-6-27" );
+•INSERT INTO Service VALUES ( “2019-7-13" , 14 , “2019-7-23");
+•INSERT INTO Service VALUES ( “2019 -3-15" , 15, “2019-3-25" );
+
+
+(b)SELECT * FROM Customer WHERE CustID IN (SELECT CustID from Bicycle WHERE ModelNo IN (SELECT ModelNo FROM BicycleModel WHERE Manufacturer = “Honda" ));
+(c)SELECT * FROM BicycleModel WHERE ModelNo IN (SELECT ModelNo FROM Bicycle WHERE CustID IN (SELECT CustID FROM Customer WHERE RefferID = “C1"));
+(d)SELECT bm.Manufacturer FROM Bicycle as bi , BicycleModel as bm WHERE ( bi.ModelNo = bm.ModelNo and bi.Color = “Red" );
+(e)SELECT ModelNo FROM Bicycle WHERE BicycleID IN (SELECT DISTINCT BicycleID FROM Service );

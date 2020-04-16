@@ -1,0 +1,60 @@
+﻿NAME       : LAVISHA JOHAR
+ROLL NO. : 1218
+
+
+Question 5. 
+CREATE DATABASE MACHINE ;
+USE MACHINE ; 
+CREATE TABLE Suppliers (SNo (Int(10)) primary key , SName(varchar(30)) not null , Status (char(20)) not null , SCity (char(20)) not null ) ;
+CREATE TABLE Parts (PNo (int(10)) primary key, PName (varchar(20)) not null , Colour (varchar(20)) not null, Weight (int(5)) not null , City (varchar(20)) not null ) ;
+CREATE TABLE Project (JNo (int(10)) primary key , JName (char (30)) not null, Jcity (char(20)) not null ) ;
+CREATE TABLE Shipment (SNo (int(30)) not null , Pno (int(10)) not null , Jno (int(8)) not null, Quantity (int(8)) not null ,Foreign Key (SNo) REFERENCES Suppliers (SNo), Foreign Key (PNo) REFERENCES Parts (PNo) ,Foreign Key (JNo) REFERENCES Project (JNo)) ;
+•INSERT INTO Suppliers VALUES ( “101” , “S1" , 30 , “Mumbai” ) ;
+•INSERT INTO Suppliers VALUES ( “102”, “S2" , 19 , “Paris" ) ;
+•INSERT INTO Suppliers VALUES (“103” , “S1" , 26 , “Cape Town" ) ;
+•INSERT INTO Suppliers VALUES ( “104” , “S2" , 30, “London” ) ;
+•INSERT INTO Suppliers VALUES (“105” , “S2", 28 , “Chennai" ) ;
+
+
+
+
+•INSERT INTO Parts VALUES (201, “P1" , “Red" , 17 , “Mumbai" ) ; 
+•INSERT INTO Parts VALUES ( 202 , “P2" , “Black” , 20, “Paris") ; 
+•INSERT INTO Parts VALUES ( 203 , “P3" , “Grey" , 25, “Cape Town” ) ; 
+•INSERT INTO Parts VALUES (204 , “P4" , “Black" , 56, “London" ) ; 
+•INSERT INTO Parts VALUES ( 205 , “P5" , “Green" ,40 , “Chennai" ) ; 
+
+
+
+
+•INSERT INTO Project VALUES ( 301, “ J1" , “Paris " ) ;
+•INSERT INTO Project VALUES ( 302, “J2" , “London" ) ;
+•INSERT INTO Project VALUES ( 303 , “J3" , “Chennai” ) ;
+•INSERT INTO Project VALUES (304 , “J4” , “New Delhi”  ) ;
+•INSERT INTO Project VALUES (305 , “J5", “Mumbai"  ) ;
+
+
+•INSERT INTO Shipment VALUES (101,201,301,250);
+•INSERT INTO Shipment VALUES (102,202,302,100);
+•INSERT INTO Shipment VALUES (103,203,303,500);
+•INSERT INTO Shipment VALUES (104,204,300);
+•INSERT INTO Shipment VALUES (105,205,305,750);
+
+
+(a)Primary Key – SNo in TABLE Suppliers 
+                                 PNo in TABLE Parts 
+                                 JNo in TABLE Shipment 
+     Foreign Key – SNo in TABLE Shipment 
+                                PNo in TABLE Shipment 
+                                JNo in TABLE Shipment 
+(b)SELECT SNo FROM Suppliers WHERE SCity = “Paris" and Status >20 ;
+(c)SELECT * FROM Suppliers WHERE SNo IN(SELECT SNo FROM Shipment WHERE PNo IN (SELECT PNo FROM Parts WHERE PName = “P2" )) ORDER BY SNo ; 
+(d)SELECT SName FROM Suppliers WHERE SNo IN (SELECT DISTINCT SNo FROM Shipment WHERE PNo IN (SELECT PNo FROM Parts WHERE PName != “ P2" )); 
+(e)SELECT s.SNo ,s.PNo ,s.JNo,s.Quantity , s.Quantity*p.Weight as “TotalShipmentWeight" FROM Shipment as s ,Parts as p WHERE s.PNo =p.PNo ;
+(f)SELECT * FROM Shipment WHERE Quantity BETWEEN 300 and 750;
+(g)SELECT PNo FROM Parts WHERE Weight >16 or PNo IN (SELECT PNo FROM Shipment WHERE SNo IN (SELECT s.SNo FROM Shipment as s , Suppliers as su WHERE s.SNo =su.SNo and su.SName = “S2” ;
+(h)SELECT City FROM Parts WHERE Color =”Red" and PNo IN (SELECT PNo FROM Shipment WHERE Quantity >5);
+(i)SELECT * FROM Parts WHERE PNo IN(SELECT PNo FROM Shipment WHERE SNo IN(SELECT SNo FROM Suppliers WHERE SCity = “ London" );
+(j)SELECT PNo FROM Shipment WHERE SNo IN (SELECT SNo FROM Suppliers WHERE SNo IN (SELECT SNo FROM Suppliers WHERE SCity = “ London" ) and JNo IN (SELECT JNo FROM Project WHERE JCity = “London" ); 
+(k)SELECT COUNT(DISTINCT(JNo)) as “Number of Projects supplied by Supplier S1” FROM Shipment WHERE SNo IN (SELECT SNo FROM Suppliers WHERE SName = “S1" ); 
+(l)SELECT COUNT (*) FROM Parts WHERE PNo IN (SELECT PNo FROM Shipment WHERE SNo IN (SELECT SNo FROM Suppliers WHERE SName = “S1" and PName = “P1" );

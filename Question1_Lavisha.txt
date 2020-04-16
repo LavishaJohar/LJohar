@@ -1,0 +1,34 @@
+﻿NAME         : LAVISHA JOHAR
+ROLL NO.   :    1218 
+
+
+  Question 1. 
+ Create Database library_system ;
+ USE library_system ;
+Create table LibraryBooks (Accession_Number (integer)) primary key, Title (varchar(20)) not null, Author (varchar(60)) not null, Department (varchar(30)) not null ,Purchase_Date (date) not null, Price (decimal(5,2)) ;
+ Create table IssuedBooks (Accession_Number (integer)not null, Borrower(varchar(47)) not null , Foreign key (Accession_Number) REFERENCES LibraryBooks (Accession_Number));
+(a)Primary Key -- Accession_Number in TABLE LibraryBooks
+Foreign Key -- Accession_Number in TABLE IssuedBooks
+
+
+•INSERT INTO LibraryBooks VALUES (5541, “Discrete Maths”, “R.D Sharma” , “Mathematics”, “2INT-5-4” , 550.00 ) ;
+•INSERT INTO LibraryBooks VALUES (6721 , “ Python programming” , “Navathe” , “CS”, “2003-6-5”, 650.00);
+•INSERT INTO LibraryBooks VALUES (7588 , “Literature and Grammar” , “S.Chand” , “English” , “2001-7-18”, 420.00) ;
+•INSERT INTO LibraryBooks VALUES (8875 , “Database System Concepts” , “Bayross” , “CS” , “2000-5-26” , 435.00) ;
+•INSERT INTO LibraryBooks VALUES (8765 , “Quantum Physics” , “Arihant” , “Physics” , “2005-6-11”, 650.00) ;
+
+
+•INSERT INTO IssuedBooks VALUES (5541 , “Aman”);
+•INSERT INTO IssuedBooks VALUES (6721 , “Derek” );
+•INSERT INTO IssuedBooks VALUES ( 7588, “Akshay”);
+•INSERT INTO IssuedBooks VALUES ( 8875, “Naidu” );
+•INSERT INTO IssuedBooks VALUES (8765 , “Pallavi”);
+(b) SET Foreign_Key_Checks = Off ; 
+       DELETE FROM IssuedBooks WHERE Accession_Number = 8875 ;
+       DELETE FROM LibraryBooks WHERE Title = “Database System Concepts" ;
+       SET Foreign_Key_Checks = On ; 
+(c)  UPDATE LibraryBooks SET Department = “CS” WHERE Title = “Discrete Maths” ; 
+(d) SELECT Title FROM LibraryBooks WHERE Department = “CS” ; 
+(e)SELECT Title FROM LibraryBooks WHERE Department = “CS” and Author = “Navathe” ;
+(f)SELECT Title From LibraryBooks, IssuedBooks WHERE LibraryBooks.Accession Number = IssiedBooks.Accession Number and Department = “CS” ;
+(g)SELECT Title FROM LibraryBooks WHERE (Price < 500 And Purchase_Date BETWEEN “1999-01-01” And “2004-01-01”) ;

@@ -1,9 +1,12 @@
 # DBMS PRACTICALS 
 Name - LAVISHA JOHAR 
+
 ROLL NO. 1218
+
 Bsc.Statistics(hons)
 
 DBMS GE PRACTICALS
+
 SUBMITTED TO - Dr. VIPIN RATHI
 
 # Description 
